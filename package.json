@@ -1,7 +1,7 @@
 {
   "name": "modelo-crud-reprograma-backend",
   "version": "1.0.0",
-  "description": "modelo para criação de aplicação crud utilizada na mentoria da reprograma",
+  "description": "Aplicação crud criada por Jamile, Mia, Sarah e Tainã",
   "main": "index.js",
   "scripts": {
     "start": "node bin/server",
@@ -13,7 +13,7 @@
     "express",
     "api"
   ],
-  "author": "Juliane Pires",
+  "author": "Grupo2 - FastAnimes",
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "cors": "^2.8.5",
