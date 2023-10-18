@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Atribui o caminho à rota
-app.use("/", routes);
+app.use("/animes", routes);
 
 const db_url = process.env.DB_URL;
 const db_user = process.env.DB_USER;
@@ -27,5 +27,6 @@ const db_data = process.env.DB_DATA;
 
 // Configura a conexão com a base de dados
 MongooseConnection(db_url, db_user, db_pass, db_data);
+// MongooseConnection(DATABASE_URL)
 
 module.exports = app;
