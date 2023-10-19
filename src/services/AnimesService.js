@@ -5,11 +5,16 @@ const getAllAnimes = async () => {
   return await Animes.find();
 }
 
+const getById = async (id) => {
+  return await Animes.findById(id);
+}
+
 const registerAnime = async (anime) => {
-  return await Animes.create(anime)
+  return await Animes.create(anime);
 }
 
 module.exports = {
   getAllAnimes,
-  registerAnime
+  registerAnime,
+  getById
 }
