@@ -16,6 +16,19 @@ const getAllAnimes = async (_req, res) => {
 	
 }
 
+const getAnimesById = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const anime = await service.getById(id);
+		if(!anime){
+			return res.status(404).json({message: "Anime não encontrado"});
+		}
+		return res.status(200).json(anime);
+	} catch (error) {
+		return res.status(500).json({message: error.message});
+	}
+}
+
 const createAnime = async (req, res) => {
 	try {
 		const {title, gender, description, author} = req.body;
@@ -31,10 +44,10 @@ const createAnime = async (req, res) => {
 	} catch (error) {
 		return res.status(500).json({message: error.message});
 	}
-	
 }
 
 module.exports = {
   getAllAnimes,
+	getAnimesById,
 	createAnime
 }
