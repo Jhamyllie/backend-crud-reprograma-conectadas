@@ -13,8 +13,13 @@ const registerAnime = async (anime) => {
   return await Animes.create(anime);
 }
 
+const deleteAnime = async (id) => {
+  return await Animes.findByIdAndDelete(id)
+}
+
 module.exports = {
   getAllAnimes,
   registerAnime,
-  getById
+  getById,
+  deleteAnime
 }

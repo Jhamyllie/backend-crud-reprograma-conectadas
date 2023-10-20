@@ -13,6 +13,15 @@ const Model = new mongoose.Schema({
     type: String,
     required: [true, "Gender is required"]
   },
+  origin:{
+    type: String,
+    enum: ['ORIGINAL', 'MANGA', 'LIGHTNOVEL', 'BOOKS', 'FILMS'],
+    required: [true, "Origin is required"]
+  },
+  studio:{
+    type: String,
+    required: [true, "Studio is required"]
+  },
   description:{
     type: String,
     required: [true, "Description is required"]
