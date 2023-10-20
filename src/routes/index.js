@@ -7,5 +7,6 @@ const animesController = require('../controllers/AnimesController');
 router.get("/", animesController.getAllAnimes);
 router.get("/:id",animesController.getAnimesById);
 router.post("/add", animesController.createAnime);
+router.delete("/delete/:id",animesController.deleteAnime);
 
 module.exports = router;
