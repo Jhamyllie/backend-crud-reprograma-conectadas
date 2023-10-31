@@ -53,10 +53,6 @@ const updateAnime = async (req, res) => {
 			return res.status(404).json({message: "Anime not found"});
 		}
 
-		const {title, gender, origin, image, description, author, studio} = req.body;
-		if(!title || !gender || !image || !description || !origin || !author || !studio){
-			return res.status(403).json({message: "All fields are mandatory"});
-		}
 		const updating = await service.updateAnime(id, {
 			title,
 			gender,
