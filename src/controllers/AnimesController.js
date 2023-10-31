@@ -65,12 +65,6 @@ const updateAnime = async (req, res) => {
 
 		const updating = await service.updateAnime(id, {
 			title,
-			gender,
-			image,
-			origin,
-			description,
-			author,
-			studio
 		});
 
 		return res.status(200).json({message: "Update completed successfully", updating});
