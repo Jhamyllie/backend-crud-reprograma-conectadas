@@ -1,5 +1,5 @@
 const service = require('../services/AnimesService');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 //TODO: Criar controllers da aplicação
 const getAllAnimes = async (_req, res) => {
