@@ -49,16 +49,14 @@ const createAnime = async (req, res) => {
 const updateAnime = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const {title, gender, origin, image, description, author, studio} = req.body;
-
 		if(!id){
 			return res.status(404).json({message: "Anime not found"});
 		}
 
+		const {title, gender, origin, image, description, author, studio} = req.body;
 		if(!title || !gender || !image || !description || !origin || !author || !studio){
 			return res.status(403).json({message: "All fields are mandatory"});
 		}
-
 		const updating = await service.updateAnime(id, {
 			title,
 			gender,
@@ -68,7 +66,6 @@ const updateAnime = async (req, res) => {
 			author,
 			studio
 		});
-
 		return res.status(200).json({message: "Update completed successfully", updating});
 	} catch (error) {
 		return res.status(500).json({message: error.message});
