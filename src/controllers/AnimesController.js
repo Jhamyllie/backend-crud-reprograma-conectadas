@@ -52,7 +52,6 @@ const updateAnime = async (req, res) => {
 		if(!id){
 			return res.status(404).json({message: "Anime not found"});
 		}
-
 		const {
 			title,
 			gender,
@@ -72,7 +71,7 @@ const updateAnime = async (req, res) => {
 			author,
 			studio
 		});
-		
+
 		return res.status(200).json({message: "Update completed successfully", updating});
 	} catch (error) {
 		return res.status(500).json({message: error.message});
