@@ -7,11 +7,16 @@ const Model = new mongoose.Schema({
   },
   title: { 
     type: String,
-    required: [true, "Title is required"] 
+    required: [true, "Title is required"],
+    unique: true,
   },
   gender: {
     type: String,
     required: [true, "Gender is required"]
+  },
+  image:{
+    type: String,
+    required: [true, "Image is required"]
   },
   origin:{
     type: String,
@@ -35,5 +40,6 @@ const Model = new mongoose.Schema({
     default: Date.now()
   },
 });
+
 const Animes = mongoose.model("animes", Model);
 module.exports = Animes;

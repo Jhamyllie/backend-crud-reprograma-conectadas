@@ -7,7 +7,7 @@ const getAllAnimes = async (_req, res) => {
 		const animes = await service.getAllAnimes();
 
 		if(animes.length === 0){
-			return res.status(404).json({message: "Não foram encontardos animes no banco de dados"})
+			return res.status(404).json({message: "No animes were found in the database"})
 		}
 		return res.status(200).json(animes);
 	} catch (error) {
@@ -21,7 +21,7 @@ const getAnimesById = async (req, res) => {
 		const { id } = req.params;
 		const anime = await service.getById(id);
 		if(!anime){
-			return res.status(404).json({message: "Anime não encontrado"});
+			return res.status(404).json({message: "Anime not found"});
 		}
 		return res.status(200).json(anime);
 	} catch (error) {
@@ -31,15 +31,42 @@ const getAnimesById = async (req, res) => {
 
 const createAnime = async (req, res) => {
 	try {
-		const {title, gender, origin, description, author, studio} = req.body;
+		const {title, gender, image, origin, description, author, studio} = req.body;
 
-		if(!title, !gender, !description, !origin, !author, !studio){
-			return res.status(403).json({message: "Todos os campos são obrogatórios"});
+		if(!title, !gender, !image, !description, !origin, !author, !studio){
+			return res.status(403).json({message: "All fields are mandatory"});
 		}
-		const neWAnime = {title, gender, origin, description, author, studio};
+
+		const neWAnime = {title, gender, image, origin, description, author, studio};
 		const savedAnime = await service.registerAnime(neWAnime);
 		return res.status(201).json({message: "New Anime added successfully", savedAnime});
 
+	} catch (error) {
+		return res.status(500).json({message: error.message});
+	}
+}
+
+const updateAnime = async (req, res) => {
+	try {
+		const { id } = req.params;
+		if(!id){
+			return res.status(404).json({message: "Anime not found"});
+		}
+
+		const {title, gender, origin, image, description, author, studio} = req.body;
+		if(!title || !gender || !image || !description || !origin || !author || !studio){
+			return res.status(403).json({message: "All fields are mandatory"});
+		}
+		const updating = await service.updateAnime(id, {
+			title,
+			gender,
+			image,
+			origin,
+			description,
+			author,
+			studio
+		});
+		return res.status(200).json({message: "Update completed successfully", updating});
 	} catch (error) {
 		return res.status(500).json({message: error.message});
 	}
@@ -59,5 +86,6 @@ module.exports = {
   getAllAnimes,
 	getAnimesById,
 	createAnime,
+	updateAnime,
 	deleteAnime
 }
