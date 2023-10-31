@@ -40,5 +40,6 @@ const Model = new mongoose.Schema({
     default: Date.now()
   },
 });
+
 const Animes = mongoose.model("animes", Model);
 module.exports = Animes;
