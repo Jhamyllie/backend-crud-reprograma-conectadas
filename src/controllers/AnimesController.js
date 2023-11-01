@@ -49,28 +49,20 @@ const createAnime = async (req, res) => {
 const updateAnime = async (req, res) => {
 	try {
 		const { id } = req.params;
+		const updateData = req.body;
+
 		if(!id){
 			return res.status(404).json({message: "Anime not found"});
 		}
-		
-		const {
-			title,
-			gender,
-			origin,
-			image,
-			description,
-			author,
-			studio
-		} = req.body;
+	
+		const updatedAnime = await service.updateAnime(id, updateData);
 
-		const updating = await service.updateAnime(id, {
-			title,
-		});
-
-		return res.status(200).json({message: "Update completed successfully", updating});
-
+		if(!updatedAnime){
+			return res.status(403).json({message: "The update could not be completed. Try again.", updateData});
+		} 
+		return res.status(200).json({message: "Update completed successfully", updateData});
 	} catch (error) {
-		return res.status(500).json({message: error.message});
+		return res.status(500).json({message: "error.message"});
 	}
 }
 
