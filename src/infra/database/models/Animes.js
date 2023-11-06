@@ -12,7 +12,7 @@ const Model = new mongoose.Schema({
   },
 
   gender: {
-    type: String,
+    type: [String],
     enum: ['SHONEN', 'SHOUJO', 'SEINEN',
     'JOSEI', 'ECCHI', 'HAREN',
     'ISEKAI', 'MECHA', 'SLICE OF LIFE',
