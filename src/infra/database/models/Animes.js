@@ -10,14 +10,17 @@ const Model = new mongoose.Schema({
     required: [true, "Title is required"],
     unique: true,
   },
+
   gender: {
-    type: String,
+    type: [String],
     required: [true, "Gender is required"]
   },
+
   image:{
     type: String,
     required: [true, "Image is required"]
   },
+
   origin:{
     type: String,
     enum: ['ORIGINAL', 'MANGA', 'LIGHTNOVEL', 'BOOKS', 'FILMS'],
