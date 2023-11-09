@@ -30,18 +30,22 @@ const Model = new mongoose.Schema({
     enum: ['ORIGINAL', 'MANGA', 'LIGHTNOVEL', 'BOOKS', 'FILMS'],
     required: [true, "Origin is required"]
   },
+
   studio:{
     type: String,
     required: [true, "Studio is required"]
   },
+
   description:{
     type: String,
     required: [true, "Description is required"]
   },
-  author: {
-    type: String,
+
+  authorship: {
+    type: [String],
     required: [true, "Author is required"]
   },
+  
   createdAt: {
     type: Date,
     default: Date.now()
