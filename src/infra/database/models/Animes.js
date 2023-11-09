@@ -38,7 +38,7 @@ const Model = new mongoose.Schema({
     type: String,
     required: [true, "Description is required"]
   },
-  author: {
+  authorship: {
     type: [String],
     required: [true, "Author is required"]
   },
