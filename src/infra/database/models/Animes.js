@@ -43,9 +43,9 @@ const Model = new mongoose.Schema({
 
   authorship: {
     type: [String],
-    required: [true, "Author is required"]
+    required: [true, "Authorship is required"]
   },
-  
+
   createdAt: {
     type: Date,
     default: Date.now()
