@@ -1,7 +1,6 @@
 const service = require('../services/AnimesService');
 // const mongoose = require('mongoose');
 
-//TODO: Criar controllers da aplicação
 const getAllAnimes = async (_req, res) => {
 	try {
 		const animes = await service.getAllAnimes();
@@ -13,7 +12,6 @@ const getAllAnimes = async (_req, res) => {
 	} catch (error) {
 		return res.status(500).json({message: error.message});
 	}
-	
 }
 
 const getAnimesById = async (req, res) => {
@@ -31,13 +29,13 @@ const getAnimesById = async (req, res) => {
 
 const createAnime = async (req, res) => {
 	try {
-		const {title, gender, image, origin, description, author, studio} = req.body;
+		const {title, gender, image, origin, description, authorship, studio} = req.body;
 
-		if(!title, !gender, !image, !description, !origin, !author, !studio){
+		if(!title, !gender, !image, !description, !origin, !authorship, !studio){
 			return res.status(403).json({message: "All fields are mandatory"});
 		}
 
-		const neWAnime = {title, gender, image, origin, description, author, studio};
+		const neWAnime = {title, gender, image, origin, description, authorship, studio};
 		const savedAnime = await service.registerAnime(neWAnime);
 		return res.status(201).json({message: "New Anime added successfully", savedAnime});
 
@@ -70,7 +68,7 @@ const deleteAnime = async(req, res)=> {
 	try {
 		const { id } = req.params;
 		const deleted = await service.deleteAnime(id);
-		return res.status(200).json({message: `O anime do ${deleted.title}, foi deletado com sucesso.`})
+		return res.status(200).json({message: `The anime from ${deleted.title} has been successfully deleted.`})
 	} catch (error) {
 		return res.status(500).json({message: error.message});
 	}
