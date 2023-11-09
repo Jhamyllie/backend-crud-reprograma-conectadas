@@ -39,7 +39,7 @@ const Model = new mongoose.Schema({
     required: [true, "Description is required"]
   },
   author: {
-    type: String,
+    type: [String],
     required: [true, "Author is required"]
   },
   createdAt: {
