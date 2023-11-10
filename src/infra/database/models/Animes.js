@@ -16,7 +16,7 @@ const Model = new mongoose.Schema({
     enum: ['SHONEN', 'SHOUJO', 'SEINEN',
     'JOSEI', 'ECCHI', 'HAREN',
     'ISEKAI', 'MECHA', 'SLICE OF LIFE',
-    'KODOMOMUKE', 'IYASHIKEI', 'YAOI'],
+    'KODOMOMUKE', 'IYASHIKEI', 'YAOI', 'YURI'],
     required: [true, "Gender is required"]
   },
 
